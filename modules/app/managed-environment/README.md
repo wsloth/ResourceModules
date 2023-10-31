@@ -57,7 +57,12 @@ module managedEnvironment 'br:bicep/modules/app.managed-environment:1.0.0' = {
     }
     platformReservedCidr: '172.17.17.0/24'
     platformReservedDnsIP: '172.17.17.17'
-    skuName: 'Consumption'
+    workloadProfiles: [
+      {
+        name: 'Consumption'
+        workloadProfileType: 'Consumption'
+      }
+    ]
     tags: {
       Env: 'test'
       'hidden-title': 'This is visible in the resource name'
@@ -113,9 +118,12 @@ module managedEnvironment 'br:bicep/modules/app.managed-environment:1.0.0' = {
     "platformReservedDnsIP": {
       "value": "172.17.17.17"
     },
-    "skuName": {
-      "value": "Consumption"
-    },
+    "workloadProfiles": [
+      {
+        "name": "Consumption"
+        "workloadProfileType": "Consumption"
+      }
+    ],
     "tags": {
       "value": {
         "Env": "test",
@@ -213,7 +221,6 @@ module managedEnvironment 'br:bicep/modules/app.managed-environment:1.0.0' = {
 | [`platformReservedCidr`](#parameter-platformreservedcidr) | string | IP range in CIDR notation that can be reserved for environment infrastructure IP addresses. It must not overlap with any other provided IP ranges and can only be used when the environment is deployed into a virtual network. If not provided, it will be set with a default value by the platform. |
 | [`platformReservedDnsIP`](#parameter-platformreserveddnsip) | string | An IP address from the IP range defined by "platformReservedCidr" that will be reserved for the internal DNS server. It must not be the first address in the range and can only be used when the environment is deployed into a virtual network. If not provided, it will be set with a default value by the platform. |
 | [`roleAssignments`](#parameter-roleassignments) | array | Array of role assignment objects that contain the 'roleDefinitionIdOrName' and 'principalId' to define RBAC role assignments on this resource. In the roleDefinitionIdOrName attribute, you can provide either the display name of the role definition, or its fully qualified ID in the following format: '/providers/Microsoft.Authorization/roleDefinitions/c2f4ef07-c644-48eb-af81-4b1b4947fb11'. |
-| [`skuName`](#parameter-skuname) | string | Managed environment SKU. |
 | [`tags`](#parameter-tags) | object | Tags of the resource. |
 | [`workloadProfiles`](#parameter-workloadprofiles) | array | Workload profiles configured for the Managed Environment. |
 | [`zoneRedundant`](#parameter-zoneredundant) | bool | Whether or not this Managed Environment is zone-redundant. |
@@ -414,14 +421,6 @@ Required. The name of the role to assign. If it cannot be found you can specify 
 
 - Required: Yes
 - Type: string
-
-### Parameter: `skuName`
-
-Managed environment SKU.
-- Required: No
-- Type: string
-- Default: `'Consumption'`
-- Allowed: `[Consumption, Premium]`
 
 ### Parameter: `tags`
 
