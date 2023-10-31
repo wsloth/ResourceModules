@@ -106,8 +106,8 @@ param revisionSuffix string = ''
 @description('Optional. List of volume definitions for the Container App.')
 param volumes array = []
 
-@description('Optional. Workload profile type to pin for container app execution.')
-param workloadProfileType string = ''
+@description('Optional. Workload profile name to pin for container app execution.')
+param workloadProfileName string = ''
 
 var secretList = !empty(secrets) ? secrets.secureList : []
 
@@ -139,7 +139,7 @@ resource defaultTelemetry 'Microsoft.Resources/deployments@2021-04-01' = if (ena
   }
 }
 
-resource containerApp 'Microsoft.App/containerApps@2022-10-01' = {
+resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
   name: name
   tags: tags
   location: location
@@ -181,7 +181,7 @@ resource containerApp 'Microsoft.App/containerApps@2022-10-01' = {
       }
       volumes: !empty(volumes) ? volumes : null
     }
-    workloadProfileType: workloadProfileType
+    workloadProfileName: workloadProfileName
   }
 }
 

@@ -322,7 +322,7 @@ module containerApp 'br:bicep/modules/app.container-app:1.0.0' = {
 | [`trafficRevisionName`](#parameter-trafficrevisionname) | string | Name of a revision. |
 | [`trafficWeight`](#parameter-trafficweight) | int | Traffic weight assigned to a revision. |
 | [`volumes`](#parameter-volumes) | array | List of volume definitions for the Container App. |
-| [`workloadProfileType`](#parameter-workloadprofiletype) | string | Workload profile type to pin for container app execution. |
+| [`workloadProfileName`](#parameter-workloadprofilename) | string | Workload profile name to pin for container app execution. |
 
 ### Parameter: `activeRevisionsMode`
 
@@ -640,9 +640,9 @@ List of volume definitions for the Container App.
 - Type: array
 - Default: `[]`
 
-### Parameter: `workloadProfileType`
+### Parameter: `workloadProfileName`
 
-Workload profile type to pin for container app execution.
+Workload profile name to pin for container app execution.
 - Required: No
 - Type: string
 - Default: `''`
