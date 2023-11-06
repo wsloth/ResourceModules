@@ -98,13 +98,10 @@ resource logAnalyticsWorkspace 'Microsoft.OperationalInsights/workspaces@2021-06
   scope: resourceGroup(split(logAnalyticsWorkspaceResourceId, '/')[2], split(logAnalyticsWorkspaceResourceId, '/')[4])
 }
 
-resource managedEnvironment 'Microsoft.App/managedEnvironments@2022-10-01' = {
+resource managedEnvironment 'Microsoft.App/managedEnvironments@2023-05-01' = {
   name: name
   location: location
   tags: tags
-  sku: {
-    name: skuName
-  }
   properties: {
     appLogsConfiguration: {
       destination: logsDestination
